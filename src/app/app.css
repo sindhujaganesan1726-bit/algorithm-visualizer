@@ -1,0 +1,23 @@
+.bars{
+    display:flex;
+    align-items: flex-end;
+    gap:2px;
+    height:320px;
+    margin-top: 20px;
+    max-width: 900px;
+}
+.bar{
+    flex: 1;
+    background-color: steelblue;
+}
+.bar.comparing{
+    background-color: gold;
+}
+.bar.swapping{
+    background-color: crimson;
+}
+.controls{
+    display: flex;
+    gap:24px;
+    margin-top: 16px;
+}
