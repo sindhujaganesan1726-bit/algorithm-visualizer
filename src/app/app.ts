@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { bubbleSort, Step } from './bubble-sort';
 import { selectionSort } from './selection-sort';
 import { insertionSort } from './insertion-sort';
+import { quickSort } from './quick-sort';
 
 @Component({
   selector: 'app-root',
@@ -42,6 +43,17 @@ export class App {
       steps = selectionSort(this.array);
     } else if (this.algorithm === 'insertion'){
       steps = insertionSort(this.array);
+    } else {
+      steps = bubbleSort(this.array);
+    }
+
+    
+    if (this.algorithm === 'selection'){
+      steps = selectionSort(this.array);
+    }else if (this.algorithm === 'insertion'){
+      steps = insertionSort(this.array);
+    } else if (this.algorithm === 'quick'){
+      steps = quickSort(this.array);
     } else {
       steps = bubbleSort(this.array);
     }
