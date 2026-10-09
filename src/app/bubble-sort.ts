@@ -1,7 +1,8 @@
 export interface Step{
-    type: 'compare' | 'swap';
+    type: 'compare' | 'swap' | 'overwrite';
     i: number ;
     j: number ;
+    value?: number;
 }
 export function bubbleSort(input: number[]): Step[]{
     const arr = [...input];

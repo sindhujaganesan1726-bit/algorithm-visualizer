@@ -4,6 +4,7 @@ import { bubbleSort, Step } from './bubble-sort';
 import { selectionSort } from './selection-sort';
 import { insertionSort } from './insertion-sort';
 import { quickSort } from './quick-sort';
+import { mergeSort } from './merge-sort';
 
 @Component({
   selector: 'app-root',
@@ -54,6 +55,8 @@ export class App {
       steps = insertionSort(this.array);
     } else if (this.algorithm === 'quick'){
       steps = quickSort(this.array);
+    } else if (this.algorithm === 'merge'){
+      steps = mergeSort(this.array);
     } else {
       steps = bubbleSort(this.array);
     }
@@ -62,14 +65,18 @@ export class App {
       if (step.type === 'compare'){
         this.comparing = [step.i , step.j];
         this.swapping = [];
-      } else {
+      } else if (step.type === 'swap'){
         const temp = this.array[step.i];
         this.array[step.i]= this.array[step.j];
         this.array[step.j] = temp;
         this.swapping = [step.i, step.j];
         this.comparing = [];
-      }
-      this.cdr.detectChanges();
+      } else {
+        this.array[step.i] = step.value as number;
+        this.swapping = [step.i];
+        this.comparing = [];
+      
+      } this.cdr.detectChanges();
       await this.sleep(this.speed);
     }
     this.comparing=[];
